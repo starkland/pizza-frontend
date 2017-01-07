@@ -36,6 +36,27 @@
     }
   }
 
+  function DisplayOnScreen(obj) {
+    var box, nome, tamanho, ingredientes, endereco, telefone, email;
+
+    box = document.getElementById('pedido-details');
+
+    nome = document.getElementById('txt-nome');
+    tamanho = document.getElementById('txt-tamanho');
+    ingredientes = document.getElementById('txt-ingredientes');
+    endereco = document.getElementById('txt-endereco');
+    telefone = document.getElementById('txt-telefone');
+    email = document.getElementById('txt-email');
+
+    box.style.visibility = 'visible';
+
+    nome.innerHTML = obj.nome;
+    tamanho.innerHTML = obj.tamanho;
+    endereco.innerHTML = obj.endereco;
+    telefone.innerHTML = obj.telefone;
+    email.innerHTML = obj.email;
+  }
+
   function handleForm(event) {
     event.preventDefault();
 
@@ -47,11 +68,12 @@
       endereco: this.endereco.value,
       cep: this.cep.value,
       telefone: this.telefone.value,
-      pizza: this.tamanho.value,
+      tamanho: this.tamanho.value,
       ingredientes: this.ingredientes
     };
 
     SendData(obj);
+    DisplayOnScreen(obj);
 
     this.reset();
   }

@@ -110,6 +110,14 @@ figcaption {
           flex-direction: column;
 }
 
+.content-area b {
+  font-weight: bold;
+}
+
+.pedido-details {
+  visibility: hidden;
+}
+
 /*
 ========
   Footer
