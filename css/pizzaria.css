@@ -22,6 +22,21 @@
   margin-bottom: 5px;
 }
 
+.video-controls svg {
+  position: relative;
+}
+
+.video-buttons.js-active path {
+  fill: #F00;
+}
+
+.video-duration {
+  font-size: 10px;
+  color: #000000;
+  float: right;
+  max-width: 60px;
+}
+
 /*
 ========
   Media

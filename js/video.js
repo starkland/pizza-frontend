@@ -2,32 +2,45 @@
 
   'use strict';
 
-  var video, playBtn, pauseBtn, duracaoBtn;
+  var video, playBtn, pauseBtn, duracao;
 
   video = document.getElementsByTagName('video')[0];
 
   playBtn = document.getElementById('playBtn');
   pauseBtn = document.getElementById('pauseBtn');
-  duracaoBtn = document.getElementById('duracaoBtn');
-
-  // ====
-
-  playBtn.addEventListener('click', play, false);
-  pauseBtn.addEventListener('click', pause, false);
-  duracaoBtn.addEventListener('click', duracao, false);
+  duracao = document.getElementById('videoDuration');
 
   // ====
 
   function play() {
     video.play();
+
+    pauseBtn.classList.remove('js-active');
+    this.classList.add('js-active');
   }
 
   function pause() {
     video.pause();
+
+    playBtn.classList.remove('js-active');
+    this.classList.add('js-active');
   }
 
-  function duracao() {
-    console.info(video.duration);
+  function duration() {
+    var current, total;
+
+    current = Math.round(video.currentTime);
+    total = Math.round(video.duration);
+
+    duracao.innerHTML = total - current / 100;
+    window.requestAnimationFrame(duration);
   }
+
+  // ====
+
+  playBtn.addEventListener('click', play, false);
+  pauseBtn.addEventListener('click', pause, false);
+
+  duration();
 
 })();
