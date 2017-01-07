@@ -1,0 +1,171 @@
+/*
+========
+  General
+========
+*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  position: relative;
+  color: #19233E;
+}
+
+h2:after {
+  content: '';
+  position: relative;
+  display: block;
+  width: 18%;
+  height: 2px;
+  background-color: #D93829;
+  margin: 5px 0 10px -2px;
+}
+
+p {
+  line-height: 20px;
+  color: #19233E;
+}
+
+figcaption {
+  font-size: 10px;
+}
+
+
+/*
+========
+  Header
+========
+*/
+
+.header-primary {
+  background-color: #F4E8DB;
+  border-bottom: 1px solid #DA4122;
+  display: block;
+  min-height: 90px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header-primary h1 {
+  vertical-align: middle;
+  width: 180px;
+  height: 60px;
+  display: block;
+  margin-left: 22%;
+}
+
+.header-primary h1 a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  text-indent: -999px;
+  background-image: url('../images/laricas.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.nav-primary li {
+  display: block;
+}
+
+.nav-primary a {
+  color: #19233E;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  line-height: 70px;
+}
+
+.nav-primary a:hover {
+  background-color: #19233E;
+  color: #DA4122;
+}
+
+
+/*
+========
+  Main
+========
+*/
+
+.content-area {
+  height: auto;
+  margin-bottom: 20px;
+  width: 100%;
+
+  display: -webkit-flex; /* Safari */
+  display: flex;
+
+  -webkit-flex-direction: column; /* Safari */
+          flex-direction: column;
+}
+
+/*
+========
+  Footer
+========
+*/
+
+.footer-primary {
+  background-color: #F4E8DB;
+  display: block;
+  min-height: 40px;
+  height: auto;
+  text-align: center;
+}
+
+small {
+  color: #DA4122;
+  padding: 10px 0;
+  display: block;
+}
+
+/*
+========
+  Media
+========
+*/
+
+@media screen and (min-width: 768px) {
+  .header-primary {
+    padding: 0 20px;
+  }
+
+  .header-primary h1 {
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 0;
+  }
+
+  .nav-primary {
+    float: right;
+  }
+
+  .nav-primary li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .content-area {
+    -webkit-flex-direction: row; /* Safari */
+            flex-direction: row;
+
+    -webkit-flex-wrap: nowrap; /* Safari */
+            flex-wrap: nowrap;
+
+    -webkit-align-items: stretch; /* Safari */
+            align-items: stretch;
+  }
+}
+
+@media screen and (min-width:992px) {}

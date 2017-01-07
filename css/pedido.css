@@ -1,0 +1,32 @@
+/*
+========
+  Pedido
+========
+*/
+
+.pedido-area aside {
+  padding: 10px;
+}
+
+.pedido-area aside:first-child {
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/*
+========
+  Media
+========
+*/
+
+@media screen and (min-width: 768px) {
+  .pedido-area aside:first-child {
+    flex-basis: 40%;
+  }
+
+  .pedido-area aside:last-child {
+    flex-basis: 60%;
+  }
+}
+
+@media screen and (min-width:992px) {}

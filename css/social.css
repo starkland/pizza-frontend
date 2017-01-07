@@ -1,0 +1,59 @@
+/*
+========
+  Social
+========
+*/
+
+.social-area {
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.social-area aside {
+  width: 100%;
+  height: 160px;
+}
+
+.social-area figure {
+  position: relative;
+  height: 100%;
+}
+
+.social-area img {
+  position: absolute;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+  background-color: #A9D7CD;
+}
+
+.social-area figcaption {
+  z-index: 2;
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  line-height: 160px;
+  position: relative;
+}
+
+/*
+========
+  Media
+========
+*/
+
+@media screen and (min-width: 768px) {
+  .social-area {
+    margin: 0;
+  }
+
+  .social-area aside {
+    -webkit-flex-grow: 1; // Safari
+            flex-grow: 1;
+  }
+}
+
+@media screen and (min-width:992px) {}

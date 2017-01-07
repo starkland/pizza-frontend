@@ -1,0 +1,61 @@
+/*
+========
+  Contato
+========
+*/
+
+.contato-area {
+  margin-bottom: 0;
+}
+
+.contato-area aside {
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  background-color: #D93829;
+  padding: 10px 0;
+}
+
+.contato-area h2 {
+  color: #F4E8DB;
+}
+
+.contato-area h2:after {
+  background-color: #F4E8DB;
+}
+
+/*
+========
+  Media
+========
+*/
+
+@media screen and (min-width: 768px) {
+  .contato-area aside {
+    height: 480px;
+    padding: 10px;
+  }
+
+  .contato-area aside:nth-child(1) {
+    flex-basis: 50%;
+  }
+
+  .contato-area aside:nth-child(2) {
+    flex-basis: 25%;
+    background-color: #FFFFFF;
+  }
+
+  .contato-area aside:nth-child(2) h2 {
+    color: #D93829
+  }
+
+  .contato-area aside:nth-child(2) h2:after {
+    background-color: #D93829
+  }
+
+  .contato-area aside:nth-child(3) {
+    flex-basis: 25%;
+  }
+}
+
+@media screen and (min-width:992px) {}

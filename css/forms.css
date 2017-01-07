@@ -1,0 +1,44 @@
+/*
+========
+  Forms
+========
+*/
+
+.form-primary fieldset {
+  margin-bottom: 15px;
+}
+
+.form-primary label {
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.form-primary input {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #DDD;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 90%;
+  height: 30px;
+}
+
+input:focus {
+  outline-color: #A9D7CD;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #A9D7CD;
+  border: none;
+  outline: none;
+  color: #19233E;
+  font-size: 18px;
+  cursor: pointer;
+}

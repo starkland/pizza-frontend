@@ -1,0 +1,41 @@
+/*
+========
+  Pizzaria
+========
+*/
+
+.pizzaria-area aside {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.pizzaria-area aside:first-child {
+  text-align: center;
+}
+
+.pizzaria-area aside:first-child img {
+  width: 100%;
+  height: 480px;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #A9D7CD;
+  margin-bottom: 5px;
+}
+
+/*
+========
+  Media
+========
+*/
+
+@media screen and (min-width: 768px) {
+  .pizzaria-area aside:first-child {
+    flex-basis: 60%;
+  }
+
+  .pizzaria-area aside:last-child {
+    flex-basis: 40%;
+  }
+}
+
+@media screen and (min-width:992px) {}
