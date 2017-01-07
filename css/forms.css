@@ -4,8 +4,12 @@
 ========
 */
 
+.form-primary div {
+  margin-bottom: 30px;
+}
+
 .form-primary fieldset {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .form-primary label {

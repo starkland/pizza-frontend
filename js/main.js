@@ -9,6 +9,7 @@
   // ====
 
   function handleForm(event) {
+    console.info(this);
     var obj;
 
     event.preventDefault();
