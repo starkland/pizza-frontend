@@ -1,0 +1,17 @@
+/*
+========
+  Offline
+========
+*/
+
+body {
+  background-color: #FFFFFF;
+
+  -webkit-transition: background-color .25s linear;
+  -o-transition: background-color .25s linear;
+  transition: background-color .25s linear;
+}
+
+body.offline {
+  background-color: #CECECE;
+}
