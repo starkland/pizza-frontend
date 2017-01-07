@@ -1,4 +1,7 @@
 (function () {
+
+  'use strict';
+
   var form;
 
   form = document.getElementById('form-pedido');

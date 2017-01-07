@@ -95,6 +95,7 @@
 							<input
 								type="tel"
 								id="cep"
+								maxlength="10"
 								placeholder="99-999-999">
 						</fieldset>
 
@@ -103,6 +104,7 @@
 							<input
 								type="tel"
 								id="telefone"
+								maxlength="15"
 								placeholder="(99) 99999-9999">
 						</fieldset>
 					</div>
@@ -110,18 +112,38 @@
 					<div>
 						<fieldset>
 							<label for="tamanho">Tamanho da Pizza</label>
-							<input type="checkbox" name="tamanho" value="P">
-							<input type="checkbox" name="tamanho" value="M">
-							<input type="checkbox" name="tamanho" value="G">
+							<input type="checkbox" name="tamanho" value="P" class="pizzas p">
+							<input type="checkbox" name="tamanho" value="M" class="pizzas m">
+							<input type="checkbox" name="tamanho" value="G" class="pizzas g">
 						</fieldset>
 
 						<fieldset>
 							<label for="ingredientes">Ingredientes</label>
-							<input type="checkbox" name="ingredientes" value="mussarela">
-							<input type="checkbox" name="ingredientes" value="picles">
-							<input type="checkbox" name="ingredientes" value="cebola">
-							<input type="checkbox" name="ingredientes" value="tomate">
-							<input type="checkbox" name="ingredientes" value="alface">
+							<input
+								type="checkbox"
+								name="ingredientes"
+								value="mussarela"
+								class="ingredientes mussarela">
+							<input
+								type="checkbox"
+								name="ingredientes"
+								value="picles"
+								class="ingredientes picles">
+							<input
+								type="checkbox"
+								name="ingredientes"
+								value="cebola"
+								class="ingredientes cebola">
+							<input
+								type="checkbox"
+								name="ingredientes"
+								value="tomate"
+								class="ingredientes tomate">
+							<input
+								type="checkbox"
+								name="ingredientes"
+								value="alface"
+								class="ingredientes alface">
 						</fieldset>
 					</div>
 
@@ -132,7 +154,7 @@
 
 		<section id="contato-area" class="content-area contato-area">
 			<aside>
-				<div id="map" class="map-container"></div>
+				<div id="map-container" class="map-container"></div>
 			</aside>
 
 			<aside>
@@ -191,8 +213,12 @@
 		<small>2016 - Todos os direitos reservados.</small>
 	</footer>
 
-	<!-- Scripts -->
+	<!-- Scripts / Libs -->
+	<script src="https://maps.googleapis.com/maps/api/js?signed_in=true"></script>
+
+	<!-- Scripts / Custom -->
 	<script src="js/main.js"></script>
+	<script src="js/mapa.js"></script>
 </body>
 
 </html>
