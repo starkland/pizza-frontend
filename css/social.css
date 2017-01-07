@@ -12,31 +12,50 @@
 .social-area aside {
   width: 100%;
   height: 160px;
+  position: relative;
 }
 
-.social-area figure {
-  position: relative;
+.social-area a {
+  display: block;
+  width: 100%;
   height: 100%;
+  background-color: #19233E;
+  opacity: 1;
+  text-decoration: none;
+
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.social-area a:hover {
+  opacity: .7;
+}
+
+.social-area a:hover figcaption {
+  margin-top: 110px;
 }
 
 .social-area img {
   position: absolute;
-  z-index: 1;
-
-  width: 100%;
-  height: 100%;
-  background-color: #A9D7CD;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: 12%;
+  width: 50px;
 }
 
 .social-area figcaption {
   z-index: 2;
   text-align: center;
   display: block;
+  color: #FFFFFF;
+  margin-top: 100px;
+  position: absolute;
   width: 100%;
-  height: 100%;
-  color: #fff;
-  line-height: 160px;
-  position: relative;
+
+  -webkit-transition: margin-top .15s ease-in-out;
+  -o-transition: margin-top .15s ease-in-out;
+  transition: margin-top .15s ease-in-out;
 }
 
 /*
