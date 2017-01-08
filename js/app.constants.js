@@ -4,7 +4,7 @@
   var ApiConfig;
 
   ApiConfig = {
-    'API_URL': 'http://localhost:3000'
+    'CEP_URL': 'https://viacep.com.br/ws/'
   };
 
   angular

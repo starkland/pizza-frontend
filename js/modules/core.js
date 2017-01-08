@@ -5,7 +5,6 @@
     .module('Core', [
       'Core.constants',
       'Core.services',
-      'Utils.map',
-      'Utils.network'
+      'Utils.map'
     ]);
 })();

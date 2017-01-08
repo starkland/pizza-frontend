@@ -22,7 +22,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 
-<body>
+<body ng-class="{ 'offline' : !online }">
 	<header ng-controller="CoreCtrl as vm" class="header-primary">
 		<h1>
 			<a href="#">Larica's Pizzaria</a>
@@ -97,23 +97,23 @@
 
 				<br><br>
 
-				<div id="pedido-details" class="pedido-details">
-					<p>Olá <b id="txt-nome"></b>, você pediu uma pizza <b id="txt-tamanho"></b>, que contém os seguintes ingredientes: <b id="txt-ingredientes"></b>. Seu pedido será entregue no endereço <b id="txt-endereco"></b>, qualquer dúvida a gente entra em contato no telefone <b id="txt-telefone"></b>, uma cópia do pedido foi enviado pro email <b id="txt-email"></b>.</p>
+				<div ng-if="vm.resumo.nome" class="pedido-details">
+					<p>Olá <b>{{vm.resumo.nome}}</b>, você pediu uma pizza <b>{{vm.resumo.tamanho}}</b>, que contém os seguintes ingredientes: <b>{{vm.resumo.ingredientes}}</b>. Seu pedido será entregue no endereço <b>{{vm.resumo.endereco}}</b>, qualquer dúvida a gente entra em contato no telefone <b>{{vm.resumo.telefone}}</b>, uma cópia do pedido foi enviado pro email <b>{{vm.resumo.email}}</b>.</p>
 
 					<br><br>
 					<p>Bom apetite!</p>
 				</div>
-
 			</aside>
 
 			<aside>
-				<form action="" class="form-primary" id="form-pedido">
+				<form ng-submit="vm.novoPedido()" class="form-primary" id="form-pedido">
 					<div>
 						<fieldset>
 							<label for="nome">Nome</label>
 							<input
 								type="text"
 								id="nome"
+								ng-model="vm.form.nome"
 								placeholder="nome e sobrenome">
 						</fieldset>
 
@@ -122,6 +122,7 @@
 							<input
 								type="email"
 								id="email"
+								ng-model="vm.form.email"
 								placeholder="usuario@email.com">
 						</fieldset>
 
@@ -130,6 +131,7 @@
 							<input
 								type="text"
 							 	id="endereco"
+							 	ng-model="vm.form.endereco"
 							 	placeholder="Rua que fica logo ali..">
 						</fieldset>
 
@@ -138,6 +140,9 @@
 							<input
 								type="tel"
 								id="cep"
+								ng-model="vm.form.cep"
+								ng-model-options="{ debounce: 1000 }"
+								ng-change="vm.searchCep()"
 								maxlength="10"
 								placeholder="99-999-999">
 						</fieldset>
@@ -147,6 +152,7 @@
 							<input
 								type="tel"
 								id="telefone"
+								ng-model="vm.form.telefone"
 								maxlength="15"
 								placeholder="(99) 99999-9999">
 						</fieldset>
@@ -159,6 +165,7 @@
 								type="radio"
 								name="tamanho"
 								data-legend="10 pessoas"
+								ng-model="vm.form.tamanho"
 								value="G"
 								class="pizzas pz-grande">
 
@@ -166,12 +173,14 @@
 								type="radio"
 								name="tamanho"
 								data-legend="6 pessoas"
+								ng-model="vm.form.tamanho"
 								value="M"
 								class="pizzas pz-media">
 							<input
 								type="radio"
 								name="tamanho"
 								data-legend="2 pessoas"
+								ng-model="vm.form.tamanho"
 								value="P"
 								class="pizzas pz-pequena">
 						</fieldset>
@@ -181,26 +190,31 @@
 							<input
 								type="checkbox"
 								name="ingredientes"
+								ng-model="vm.form.ingredientes"
 								value="mussarela"
 								class="ingredientes mussarela">
 							<input
 								type="checkbox"
 								name="ingredientes"
+								ng-model="vm.form.ingredientes"
 								value="picles"
 								class="ingredientes picles">
 							<input
 								type="checkbox"
 								name="ingredientes"
+								ng-model="vm.form.ingredientes"
 								value="cebola"
 								class="ingredientes cebola">
 							<input
 								type="checkbox"
 								name="ingredientes"
+								ng-model="vm.form.ingredientes"
 								value="tomate"
 								class="ingredientes tomate">
 							<input
 								type="checkbox"
 								name="ingredientes"
+								ng-model="vm.form.ingredientes"
 								value="alface"
 								class="ingredientes alface">
 						</fieldset>
@@ -208,7 +222,7 @@
 
 					<button type="submit">Pronto!</button>
 				</form>
-			</aside>
+		</aside>
 		</section>
 
 		<section ng-controller="ContatoCtrl as vm" id="contato-area" class="content-area contato-area">
@@ -310,7 +324,7 @@
 	<!-- Services -->
 	<script src="js/services/cep.js"></script>
 	<script src="js/services/mapa.js"></script>
-	<script src="js/services/network-status.js"></script>
+	<script src="js/services/storage.js"></script>
 </body>
 
 </html>

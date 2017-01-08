@@ -1,22 +1,29 @@
 (function() {
   'use strict';
 
-  function InitApp() {
-    console.warn('InitApp');
+  function InitApp($rootScope, $window, Storage) {
+    $rootScope.online = navigator.onLine;
 
-    // $rootScope.online = navigator.onLine;
+    function handleStatus(event) {
+      switch(event.type) {
+        case 'offline':
+          $rootScope.$apply(function() {
+            $rootScope.online = false;
+          });
+        break;
 
-    // $window.addEventListener('offline', function() {
-    //   $rootScope.$apply(function() {
-    //     $rootScope.online = false;
-    //   });
-    // }, false);
+        case 'online':
+          $rootScope.$apply(function() {
+            $rootScope.online = true;
+          });
 
-    // $window.addEventListener('online', function() {
-    //   $rootScope.$apply(function() {
-    //     $rootScope.online = true;
-    //   });
-    // }, false);
+          Storage.verify();
+        break;
+      }
+    }
+
+    $window.addEventListener('offline', handleStatus, false);
+    $window.addEventListener('online', handleStatus, false);
   }
 
   angular
