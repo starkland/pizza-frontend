@@ -2,28 +2,24 @@
   'use strict';
 
   function AboutCtrl() {
-    var _video, playBtn, pauseBtn, Video;
+    var vm, _video, Video;
+
+    vm = this;
+
 
     _video = document.getElementsByTagName('video')[0];
-
-    playBtn = document.getElementById('playBtn');
-    pauseBtn = document.getElementById('pauseBtn');
 
     // ====
 
     Video = {
       play: function() {
         _video.play();
-
-        pauseBtn.classList.remove('js-active');
-        this.classList.add('js-active');
+        vm.play = true;
       },
 
       pause: function() {
         _video.pause();
-
-        playBtn.classList.remove('js-active');
-        this.classList.add('js-active');
+        vm.play = false;
       },
 
       duration: function() {
@@ -43,8 +39,10 @@
 
     // ====
 
-    playBtn.addEventListener('click', Video.play, false);
-    pauseBtn.addEventListener('click', Video.pause, false);
+    vm.video = {
+      play: Video.play,
+      pause: Video.pause
+    };
   }
 
   angular

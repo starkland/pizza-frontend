@@ -54,8 +54,9 @@
 
 				<div class="video-controls">
 					<svg
-						id="playBtn"
+						ng-click="vm.video.play()"
 						class="video-buttons"
+						ng-class="{ 'js-active': vm.play }"
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
 						height="24"
@@ -65,8 +66,9 @@
 					</svg>
 
 					<svg
-						id="pauseBtn"
+						ng-click="vm.video.pause()"
 						class="video-buttons"
+						ng-class="{ 'js-active': !vm.play }"
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
 						height="24"
