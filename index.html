@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="LaraApp">
 
 <head>
 	<meta charset="UTF-8">
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<header class="header-primary">
+	<header ng-controller="CoreCtrl as vm" class="header-primary">
 		<h1>
 			<a href="#">Larica's Pizzaria</a>
 		</h1>
@@ -39,7 +39,7 @@
 	</header>
 
 	<main>
-		<section id="pizzaria-area" class="content-area pizzaria-area">
+		<section ng-controller="AboutCtrl as vm" id="pizzaria-area" class="content-area pizzaria-area">
 			<aside>
 			<!-- controls -->
 				<video poster="http://dummyimage.com/640x360/4d494d/686a82.gif">
@@ -85,7 +85,7 @@
 			</aside>
 		</section>
 
-		<section id="pedido-area" class="content-area pedido-area">
+		<section ng-controller="PedidoCtrl as vm" id="pedido-area" class="content-area pedido-area">
 			<aside>
 				<h2>Pedido</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eum at animi commodi pariatur ipsam aperiam, placeat eligendi, illo hic.</p>
@@ -206,7 +206,7 @@
 			</aside>
 		</section>
 
-		<section id="contato-area" class="content-area contato-area">
+		<section ng-controller="ContatoCtrl as vm" id="contato-area" class="content-area contato-area">
 			<aside>
 				<div id="map-container" class="map-container"></div>
 			</aside>
@@ -232,7 +232,7 @@
 			</aside>
 		</section>
 
-		<section id="social-area" class="content-area social-area">
+		<section ng-controller="SocialCtrl as vm" id="social-area" class="content-area social-area">
 			<aside>
 				<a href="https://www.facebook.com" target="_blank" title="Facebook">
 					<figure>
@@ -276,14 +276,36 @@
 	</footer>
 
 	<!-- Scripts / Libs -->
-	<script src="https://maps.googleapis.com/maps/api/js?signed_in=true"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js">
+	</script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?signed_in=true">
+	</script>
 
 	<!-- Scripts / Custom -->
-	<script src="js/main.js"></script>
-	<script src="js/video.js"></script>
-	<script src="js/offline.js"></script>
-	<script src="js/cep.js"></script>
-	<script src="js/mapa.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/app.config.js"></script>
+	<script src="js/app.constants.js"></script>
+
+	<!-- Módulos -->
+	<script src="js/modules/core.js"></script>
+	<script src="js/modules/about.js"></script>
+	<script src="js/modules/pedido.js"></script>
+	<script src="js/modules/contato.js"></script>
+	<script src="js/modules/social.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers/core.js"></script>
+	<script src="js/controllers/about.js"></script>
+	<script src="js/controllers/pedido.js"></script>
+	<script src="js/controllers/contato.js"></script>
+	<script src="js/controllers/social.js"></script>
+
+	<!-- Services -->
+	<script src="js/services/cep.js"></script>
+	<script src="js/services/mapa.js"></script>
+	<script src="js/services/network-status.js"></script>
 </body>
 
 </html>
