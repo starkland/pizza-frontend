@@ -5,6 +5,7 @@
     .module('Core', [
       'Core.constants',
       'Core.services',
-      'Utils.map'
+      'Utils.map',
+      'Utils.geolocation'
     ]);
 })();

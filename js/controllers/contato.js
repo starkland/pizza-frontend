@@ -1,12 +1,33 @@
 (function() {
   'use strict';
 
-  function ContatoCtrl(MapService) {
-    MapService.newMap();
+  function ContatoCtrl($rootScope, Geolocation, MapService, Storage) {
+    var location, mapContainer;
+
+    location = Storage.get('position');
+    mapContainer = document.getElementById('map-container');
+
+    // ====
+
+    if (!location) {
+      Geolocation.getByUser();
+    }
+    // else {
+    //   MapService.newMap(location, mapContainer);
+    // }
+
+    // ====
+
+    $rootScope.$on('position', function(evt, obj) {
+      MapService.newMap(obj.data, mapContainer);
+    });
   }
 
   ContatoCtrl.$inject = [
-    'MapService'
+    '$rootScope',
+    'Geolocation',
+    'MapService',
+    'Storage'
   ];
 
   angular
