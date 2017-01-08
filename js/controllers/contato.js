@@ -2,8 +2,6 @@
   'use strict';
 
   function ContatoCtrl(MapService) {
-    console.info('ContatoCtrl');
-
     MapService.newMap();
   }
 

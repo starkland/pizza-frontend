@@ -23,7 +23,7 @@
 </head>
 
 <body ng-class="{ 'offline' : !online }">
-	<header ng-controller="CoreCtrl as vm" class="header-primary">
+	<header class="header-primary">
 		<h1>
 			<a href="#">Larica's Pizzaria</a>
 		</h1>
@@ -254,38 +254,11 @@
 		</section>
 
 		<section ng-controller="SocialCtrl as vm" id="social-area" class="content-area social-area">
-			<aside>
-				<a href="https://www.facebook.com" target="_blank" title="Facebook">
+			<aside ng-repeat="social in vm.social_list">
+				<a ng-href="{{social.url}}" target="_blank" title="{{social.name}}">
 					<figure>
-						<img src='images/icons/facebook.svg'/>
-						<figcaption>Facebook</figcaption>
-					</figure>
-				</a>
-			</aside>
-
-			<aside>
-				<a href="https://www.twitter.com" target="_blank" title="Twitter">
-					<figure>
-						<img src='images/icons/twitter.svg'/>
-						<figcaption>Twitter</figcaption>
-					</figure>
-				</a>
-			</aside>
-
-			<aside>
-				<a href="https://www.github.com" target="_blank" title="Github">
-					<figure>
-						<img src='images/icons/github.svg'/>
-						<figcaption>Github</figcaption>
-					</figure>
-				</a>
-			</aside>
-
-			<aside>
-				<a href="https://www.instagram.com" target="_blank" title="Instagram">
-					<figure>
-						<img src='images/icons/instagram.svg'/>
-						<figcaption>Instagram</figcaption>
+						<img ng-src='images/icons/{{social.name}}.svg'/>
+						<figcaption>{{social.name}}</figcaption>
 					</figure>
 				</a>
 			</aside>
@@ -317,7 +290,6 @@
 	<script src="js/modules/social.js"></script>
 
 	<!-- Controllers -->
-	<script src="js/controllers/core.js"></script>
 	<script src="js/controllers/about.js"></script>
 	<script src="js/controllers/pedido.js"></script>
 	<script src="js/controllers/contato.js"></script>
