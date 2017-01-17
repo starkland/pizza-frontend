@@ -9,12 +9,16 @@
     vm.novoPedido = novoPedido;
     vm.searchCep = _searchCep;
 
-    vm.form = {};
+    vm.form = {
+      ingredientes: {}
+    };
     vm.resumo = {};
 
     // ====
 
     function novoPedido() {
+      vm.form.ingredientes = Object.keys(vm.form.ingredientes);
+
       angular.extend(vm.resumo, vm.form);
 
       if ($rootScope.online) {
