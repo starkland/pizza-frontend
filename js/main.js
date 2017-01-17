@@ -52,6 +52,7 @@
 
     nome.innerHTML = obj.nome;
     tamanho.innerHTML = obj.tamanho;
+    ingredientes.innerHTML = obj.ingredientes;
     endereco.innerHTML = obj.endereco;
     telefone.innerHTML = obj.telefone;
     email.innerHTML = obj.email;
@@ -60,7 +61,14 @@
   function handleForm(event) {
     event.preventDefault();
 
-    var obj, ingredientes;
+    var obj, ingredientes, ingredientesArray;
+
+    ingredientes = document.querySelectorAll('input[name="ingredientes"]:checked');
+    ingredientesArray = [];
+
+    ingredientes.forEach(function(el, index, array) {
+      ingredientesArray.push(el.value)
+    });
 
     obj = {
       nome: this.nome.value,
@@ -69,7 +77,7 @@
       cep: this.cep.value,
       telefone: this.telefone.value,
       tamanho: this.tamanho.value,
-      ingredientes: this.ingredientes
+      ingredientes: ingredientesArray
     };
 
     SendData(obj);
