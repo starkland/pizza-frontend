@@ -56,7 +56,6 @@
   background-size: 100%;
 }
 
-
 .ingredientes {
   width: 100px;
   height: 100px;
@@ -68,10 +67,44 @@
   -moz-appearance: none;
   appearance: none;
 
-  background-image: url('../images/icons/pizza.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.ingredientes:after {
+  content: attr(value);
+  position: absolute;
+  color: #000000;
+  font-size: 10px;
+  bottom: -17px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+}
+
+.ingredientes.queijo {
+  background-image: url('../images/ingredients/queijo.svg');
+}
+
+.ingredientes.pimenta {
+  background-image: url('../images/ingredients/pimenta.svg');
+}
+
+.ingredientes.cebola {
+  background-image: url('../images/ingredients/cebola.svg');
+}
+
+.ingredientes.tomate {
+  background-image: url('../images/ingredients/tomate.svg');
+}
+
+.ingredientes.alface {
+  background-image: url('../images/ingredients/alface.svg');
+}
+
+.ingredientes:checked {
+  background-color: orange;
 }
 
 /*
