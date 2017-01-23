@@ -10,8 +10,11 @@
 
 Este projeto foi desenvolvido em diferentes versões, veja abaixo quais estão disponíveis:
 
-- [Vanilla JS](https://github.com/starkland/pizza-frontend/tree/master)
-- [Angular 1.6](https://github.com/starkland/pizza-frontend/tree/angular-v1)
+- Vanilla JS
+  - [ES5](https://github.com/starkland/pizza-frontend/tree/master)
+  - [ES6](https://github.com/starkland/pizza-frontend/tree/es6)
+- Angular JS
+  - [1.6](https://github.com/starkland/pizza-frontend/tree/angular-v1)
 
 
 ## Contribuindo
