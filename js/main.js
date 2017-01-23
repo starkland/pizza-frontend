@@ -2,8 +2,6 @@
 
   'use strict';
 
-  const form = document.getElementById('form-pedido');
-
   // ====
 
   // Criando uma nova classe utilizando a forma declarativa
@@ -67,16 +65,12 @@
   function handleForm(event) {
     event.preventDefault();
 
-    var obj, ingredientes, ingredientesArray;
+    let ingredientes = document.querySelectorAll('input[name="ingredientes"]:checked');
+    const ingredientesArray = [];
 
-    ingredientes = document.querySelectorAll('input[name="ingredientes"]:checked');
-    ingredientesArray = [];
+    ingredientes.forEach((element, index) => ingredientesArray.push(element.value));
 
-    ingredientes.forEach(function(el, index, array) {
-      ingredientesArray.push(el.value)
-    });
-
-    obj = {
+    const obj = {
       nome: this.nome.value,
       email: this.email.value,
       endereco: this.endereco.value,
@@ -94,6 +88,7 @@
 
   // ====
 
+  const form = document.getElementById('form-pedido');
   form.addEventListener('submit', handleForm, false);
 
 })();
