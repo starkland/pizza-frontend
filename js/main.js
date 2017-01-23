@@ -2,34 +2,40 @@
 
   'use strict';
 
-  var form, Storage;
-
-  form = document.getElementById('form-pedido');
+  const form = document.getElementById('form-pedido');
 
   // ====
 
-  Storage = {
-    get: function(key) {
-      return JSON.parse(localStorage.getItem(key));
-    },
+  // Criando uma nova classe utilizando a forma declarativa
+  // ====
 
-    set: function(key, value) {
-      localStorage.setItem(key, JSON.stringify(value));
+  class Storage {
+    constructor(key, value = null) {
+      this.key = key;
+      this.value = value;
+    }
+
+    get() {
+      return JSON.parse(localStorage.getItem(this.key));
+    }
+
+    set() {
+      return localStorage.setItem(this.key, JSON.stringify(this.value));
+    }
+
+    info() {
+      return localStorage;
     }
   };
 
   function SendData(obj) {
-    var body, offline, pedido;
+    const body = document.getElementsByTagName('body')[0];
+    let offline = body.classList.contains('offline');
 
-    body = document.getElementsByTagName('body')[0];
-
-    offline = '';
-    offline = body.classList.contains('offline');
-
-    pedido = '';
+    let storage = new Storage('pedido', obj);
 
     if (offline) {
-      Storage.set('pedido', obj);
+      storage.set();
       console.warn('O usuário não possui conexão com a internet!');
     } else {
       console.info('Seu pedido foi enviado com sucesso!');

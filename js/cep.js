@@ -2,49 +2,69 @@
 
   'use strict';
 
-  var field, Cep, Storage, endereco;
-
-  field = document.getElementById('cep');
-  endereco = document.getElementById('endereco');
-
   // ====
 
-  Storage = {
-    get: function(key) {
-      return JSON.parse(localStorage.getItem(key));
-    },
+  class Storage {
+    constructor(key, value) {
+      this.key = key;
+      this.value = value;
+    }
 
-    set: function(key, value) {
-      localStorage.setItem(key, JSON.stringify(value));
+    get() {
+      return JSON.parse(localStorage.getItem(this.key));
+    }
+
+    set() {
+      return localStorage.setItem(this.key, JSON.stringify(this.value));
+    }
+
+    info() {
+      return localStorage;
     }
   };
 
-  Cep = {
-    get: function(cep) {
-      var url;
+  class Cep {
+    constructor(cep, addressArea) {
+      this.cep = cep;
+      this.url = `https://viacep.com.br/ws/${this.cep}/json/`;
+    }
 
-      url = 'https://viacep.com.br/ws/' + cep + '/json/';
+    response(response) {
+      return response.json();
+    }
 
-      fetch(url).then(function(response) {
-        response.json().then(function(data) {
-          Storage.set('endereco', data);
+    error(error) {
+      throw new Error(error);
+    }
 
-          endereco.value = data.logradouro + ', ' + data.bairro +  ', ' + data.localidade;
-        })
-      }, function(err) {
-        console.error(err);
-      })
+    handleSuccess(data) {
+      let storage = new Storage('endereco', data);
+      storage.set();
+
+      let endereco = document.getElementById('endereco');
+      endereco.value = `${data.logradouro}, ${data.bairro}, ${data.localidade}`;
+    }
+
+    get() {
+      fetch(this.url)
+        .then(this.response)
+        .then(this.handleSuccess)
+        .catch(this.error);
     }
   };
 
-  function handleBlur(event) {
-    if (this.value) {
-      Cep.get(this.value);
+  function handleBlur() {
+    let cep = this.value;
+
+    if (cep && typeof cep === 'string') {
+      const CepService = new Cep(cep);
+      CepService.get();
     }
   }
 
   // ====
 
+  let field = document.getElementById('cep');
   field.addEventListener('blur', handleBlur, false);
 
 })();
