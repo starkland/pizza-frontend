@@ -5,9 +5,7 @@
   // ====
 
   function handleStatus(event) {
-    var body, condition;
-
-    body = document.getElementsByTagName('body')[0];
+    const body = document.getElementsByTagName('body')[0];
 
     switch(event.type) {
       case 'offline':
