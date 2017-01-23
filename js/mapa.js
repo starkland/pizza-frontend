@@ -4,56 +4,64 @@
 
   // ====
 
-  function BuildMap(obj) {
-    var latLon, mapOptions, mapContainer, map, marker, infowindow;
+  class MapaService {
+    constructor(lat, lng, mapContainer) {
+      this.lat = lat;
+      this.lng = lng;
 
-    latLon = new google.maps.LatLng(obj.latitude, obj.longitude);
+      this.latLng = new google.maps.LatLng(this.lat, this.lng);
 
-    mapOptions = {
-      zoom: 10,
-      center: latLon,
-      mapTypeId: 'roadmap',
-      scrollwheel: false
-    };
+      this.mapContainer = mapContainer;
+      this.mapOptions = {
+        zoom: 10,
+        center: this.latLng,
+        mapTypeId: 'roadmap',
+        scrollwheel: false
+      };
 
-    mapContainer = document.getElementById('map-container');
+      this.map = new google.maps.Map(this.mapContainer, this.mapOptions);
+    }
 
-    map = new google.maps.Map(mapContainer, mapOptions);
+    Marker() {
+      return new google.maps.Marker({
+        position: this.latLng,
+        map: this.map
+      });
+    }
 
-    marker = new google.maps.Marker({
-      position: latLon,
-      map: map
-    });
+    InfoWindow(marker, content) {
+      const infowindow = new google.maps.InfoWindow;
 
-    infowindow = new google.maps.InfoWindow;
-    infowindow.setContent('A pizzaria fica aqui!');
-    infowindow.open(map, marker);
-  }
+      infowindow.setContent(content);
+      infowindow.open(this.map, marker);
+    }
+  };
 
-  function _success(position) {
-    // console.info('A latitude é: '  + position.coords.latitude);
-    // console.info('A longitude é: ' +  position.coords.longitude);
+  function success(position) {
+    let mapContainer = document.getElementById('map-container');
 
-    var obj;
-
-    obj = {
+    const obj = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     };
 
-    BuildMap(obj);
+    let { latitude: lat, longitude: lng } = obj;
+
+    let Mapa = new MapaService(lat, lng, mapContainer);
+    let marker = Mapa.Marker();
+    Mapa.InfoWindow(marker, 'A pizzaria fica aqui!');
   }
 
-  function _error(msg) {
-    console.error('Geolocation: ', msg);
+  function error(err) {
+    throw new Error(err);
   }
 
   // ====
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(_success, _error);
+    navigator.geolocation.getCurrentPosition(success, error);
   } else {
-    console.warn('Este navegador não suporta Geolocation!');
+    console.error('Este navegador não suporta Geolocation!');
   }
 
 })();
