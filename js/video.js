@@ -1,46 +1,61 @@
-(function() {
+(function(root) {
 
   'use strict';
 
-  var video, playBtn, pauseBtn, duracao;
-
-  video = document.getElementsByTagName('video')[0];
-
-  playBtn = document.getElementById('playBtn');
-  pauseBtn = document.getElementById('pauseBtn');
-  duracao = document.getElementById('videoDuration');
-
   // ====
 
-  function play() {
-    video.play();
+  class Video {
+    constructor(video, play, pause, duration) {
+      this.video = video;
+      this.play = play;
+      this.pause = pause;
+      this.duration = duration;
+    }
+
+    Play() {
+      return this.video.play();
+    }
+
+    Pause() {
+      return this.video.pause();
+    }
+
+    Time() {
+      let video = this.video;
+
+      const total = Math.round(video.duration);
+      const current = Math.round(video.currentTime);
+
+      this.duration.innerHTML = total - current / 100;
+    }
+  };
+
+  let video = document.getElementsByTagName('video')[0];
+  let playBtn = document.getElementById('playBtn');
+  let pauseBtn = document.getElementById('pauseBtn');
+  let duration = document.getElementById('videoDuration');
+
+  let VideoElement = new Video(video, playBtn, pauseBtn, duration);
+
+  function handlePlay() {
+    VideoElement.Play();
 
     pauseBtn.classList.remove('js-active');
     this.classList.add('js-active');
   }
 
-  function pause() {
-    video.pause();
+  function handlePause() {
+    VideoElement.Pause();
 
     playBtn.classList.remove('js-active');
     this.classList.add('js-active');
   }
 
-  function duration() {
-    var current, total;
-
-    current = Math.round(video.currentTime);
-    total = Math.round(video.duration);
-
-    duracao.innerHTML = total - current / 100;
-    window.requestAnimationFrame(duration);
-  }
-
   // ====
 
-  playBtn.addEventListener('click', play, false);
-  pauseBtn.addEventListener('click', pause, false);
+  playBtn.addEventListener('click', handlePlay, false);
+  pauseBtn.addEventListener('click', handlePause, false);
 
-  duration();
+  // root.requestAnimationFrame(VideoElement.Time);
 
-})();
+})(this);
