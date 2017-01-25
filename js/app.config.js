@@ -1,16 +1,15 @@
-// (function() {
-//   'use strict';
+(function() {
+  'use strict';
 
-//   function AppConfig($httpProvider) {
-//     $httpProvider.interceptors.push('NotFoundInterceptor');
-//     $httpProvider.interceptors.push('AuthInterceptor');
-//   }
+  function AppConfig($httpProvider) {
+    $httpProvider.interceptors.push('NotFoundInterceptor');
+  }
 
-//   AppConfig.$inject = [
-//     '$httpProvider'
-//   ];
+  AppConfig.$inject = [
+    '$httpProvider'
+  ];
 
-//   angular
-//     .module('Core.config', [])
-//     .config(AppConfig);
-// })()
+  angular
+    .module('Core.config', [])
+    .config(AppConfig);
+})()
